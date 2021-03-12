@@ -1,9 +1,11 @@
 class Person(object):
-    def __init__(self,name,age):
+    def __init__(self, name, age):
         self.name = name
         self.age = age
+
+
 if __name__ == '__main__':
-    person = Person('LW',30)
+    person = Person('LW', 30)
     print(person)
     print(type(person))
     print(dir(person))

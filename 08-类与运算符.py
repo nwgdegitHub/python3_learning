@@ -23,3 +23,13 @@ __div__(self,other)
 __or__(self,other)
 
 __and__(self,other)
+
+# 格式化符号
+
+%s
+%d
+%f
+%c
+
+# 输入
+input("提示信息")

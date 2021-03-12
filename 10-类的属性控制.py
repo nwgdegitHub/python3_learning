@@ -21,4 +21,4 @@ class Programer(object):
 
 if __name__ == '__main__':
     p = Programer('LW',30)
-    print p.name
+    print(p.name)

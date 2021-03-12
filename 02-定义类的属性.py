@@ -1,6 +1,8 @@
 class Person(object):
     mobile = '18856425363'
-    def __init__(self,name,age,weight):
+
+    def __init__(self, name, age, weight):
+        self._Person__weight = None
         self.name = name
         self._age = age
         self.__weight = weight
@@ -8,16 +10,21 @@ class Person(object):
     def get_weight(self):
         return self.__weight
 
+    @property
+    def Person__weight(self):
+        return self._Person__weight
+
+
 if __name__ == '__main__':
     # 注意 定义了3个参数，必须传3个
     # person = Person('LW',30)
-    person = Person('LW',30,70)
+    person = Person('LW', 30, 70)
 
     print(dir(person))
     # 获取对象的全部属性
     print(person.__dict__)
     print(person.get_weight())
-    print(person._Person__weight)
+    print(person.Person__weight)
 
 # <__main__.Person object at 0x10a86aee0>
 # <class '__main__.Person'>

@@ -8,12 +8,13 @@
 # __dir__
 
 class Person(object):
-    def __init__(self,name,age):
+    def __init__(self, name, age):
         self.name = name
-        if isinstance(age,int):
+        if isinstance(age, int):
             self.age = age
         else:
             raise Exception('age must be int')
+
 
 if __name__ == '__main__':
     person = Person('LW',30)

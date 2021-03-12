@@ -4,4 +4,4 @@
 # 2008年推出了python3
 # 安装库时注意用pip3 install xxx
 
-print (1.01**365)
+print(1.01**365)
