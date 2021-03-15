@@ -1,7 +1,23 @@
-# 文件读写
+# 文件 基本操作： 打开-读写-关闭
 # 先得到一个文件对象
-# f = open("1.txt",'w')
-# f.close()
 
-f.readline()
-f.readlines()
+# f = open("test.txt", 'w')
+f = open("test.txt", 'r')
+
+# f.write('12345')
+# ...
+# print(f.read())
+
+# print(f.readline())  # 读一行
+
+# print(f.readlines())  # 读全部 每一行 + '\n' 作为一个元素 存入一个数组
+# ['葵花宝典的来源与出处\n', '\n', '《葵花宝典》源于金庸小说《笑傲江湖》。......]
+
+f.close()
+
+# open("文件路径",模式) 访问模式不可以省略
+
+# f.read(要读的字节长度)
+
+# 移动文件指针
+# f.seek(偏移量,起始位置)  起始位置0开头 1当前 2结尾
