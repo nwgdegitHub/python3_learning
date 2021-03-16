@@ -3,11 +3,11 @@ import os  # 文件夹操作都需要借助os模块
 # os.函数名()
 # os.rename(目标文件名, 新文件名)
 # os.remove(目标文件名)
-# os.mkdir(文件夹名字)
-# os.rmdir(文件夹名字)
-# os.getcwd()
-#
-
+# os.mkdir(文件夹名字) #创建文件夹
+# os.rmdir(文件夹名字) #删除文件夹
+# os.getcwd() #获取当前目录
+# os.chdir() #改变目录路径
+print(os.getcwd())
 
 
 # 1.用户输入目标文件
@@ -41,3 +41,5 @@ while True:
 old_f.close()
 new_f.close()
 
+
+# 字符串可以看作是一个list 可以切片
