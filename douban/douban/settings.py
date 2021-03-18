@@ -1,4 +1,4 @@
-# Scrapy settings for scrapy_learning project
+# Scrapy settings for douban project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,18 +7,17 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'scrapy_learning'
+BOT_NAME = 'douban'
 
-SPIDER_MODULES = ['scrapy_learning.spiders']
-NEWSPIDER_MODULE = 'scrapy_learning.spiders'
+SPIDER_MODULES = ['douban.spiders']
+NEWSPIDER_MODULE = 'douban.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'scrapy_learning (+http://www.yourdomain.com)'
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Safari/605.1.15'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = False
+ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -46,13 +45,13 @@ ROBOTSTXT_OBEY = False
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'scrapy_learning.middlewares.ScrapyLearningSpiderMiddleware': 543,
+#    'douban.middlewares.DoubanSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'scrapy_learning.middlewares.ScrapyLearningDownloaderMiddleware': 543,
+#    'douban.middlewares.DoubanDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -64,7 +63,7 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'scrapy_learning.pipelines.ScrapyLearningPipeline': 300,
+#    'douban.pipelines.DoubanPipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
