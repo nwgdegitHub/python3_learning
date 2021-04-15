@@ -14,3 +14,17 @@
 # 然后他只是简单做了一下梳理，整了一个界面。就做成一个流量几十万的网站，靠着广告费都能赚一大笔了
 
 # 再比如天眼查，集数据采集，数据清洗，数据建模，数据产品化为一体的大数据
+
+
+# scrapy 抓取4步
+# 1. 新建项目
+# 2. 明确目标
+# 3. 制作爬虫
+# 4. 存储内容
+#
+# Mac 修改 path如何生效?
+# open ~/.bash_profile
+# 修改...
+# source ~/.bash_profile
+#
+# Mac OSX 平台安装 MongoDB 参考:https://www.runoob.com/mongodb/mongodb-osx-install.html

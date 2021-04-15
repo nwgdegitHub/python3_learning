@@ -92,6 +92,7 @@ def getData(baseurl):
             # bd = str(bd)
             bd = re.sub('<br(\s+)?/>(\s+)'," ", bd)  # 去掉br
             bd = re.sub('/'," ",bd)  # 去掉/
+            bd = re.sub('< p>', "", bd) # 去掉多余的< p> 这些操作可以根据实际情况去弄
 
             data.append(bd.strip())  # 去掉前后空格
             # print(bd.strip().find("<div class=\"star\">"))
