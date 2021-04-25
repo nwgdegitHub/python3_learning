@@ -21,7 +21,7 @@ print(sum(365))
 # 今天的日期是 第XXX天 我应该存XXX 目前位置存了XXX
 print(datetime.date.today())
 
-monthRange = calendar.monthrange(2021,4)
+monthRange = calendar.monthrange(2021, 4)
 print(monthRange)
 
 # 输出的是一个元组，第一个元素是所查月份的第一天对应的是星期几（0-6），第二个元素是这个月的天数。
