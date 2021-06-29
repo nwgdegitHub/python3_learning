@@ -12,7 +12,7 @@ def main():
     # 1.爬取网页
     baseurl = "http://movie.douban.com/top250?start="
     datalist = getData(baseurl)
-
+    # print(datalist)
     # 2.解析数据
 
     # 3.保存数据
@@ -87,7 +87,7 @@ def getData(baseurl):
             else:
                 data.append(" ")
             # 8
-            print(re.findall(findBd, str(item)))
+            # print(re.findall(findBd, str(item)))
             bd = re.findall(findBd, str(item))[0]
             # bd = str(bd)
             bd = re.sub('<br(\s+)?/>(\s+)'," ", bd)  # 去掉br
@@ -97,6 +97,10 @@ def getData(baseurl):
             data.append(bd.strip())  # 去掉前后空格
             # print(bd.strip().find("<div class=\"star\">"))
             # 我这里有一个问题 就是findBd这个正则找到的内容里有html标签 需要继续处理一下
+
+
+            # 9
+            data.append(False)
 
             datalist.append(data)
 
@@ -118,7 +122,7 @@ def askURL(url):
         # "Sec-Fetch-Mode": "navigate",
         # "Sec-Fetch-Site": "none",
         # "Upgrade-Insecure-Requests": "1",
-        # "Cookie": "bid=f7CkS1mANhE; dbcl2='195346423:xqjLGkOA9sc'; ck=Ta54; _pk_ref.100001.4cf6=%5B%22%22%2C%22%22%2C1616658085%2C%22https%3A%2F%2Faccounts.douban.com%2F%22%5D; _pk_ses.100001.4cf6=*; push_noty_num=0; push_doumail_num=0; __yadk_uid=Q5MT4k0DQ9sLet0cCMfRQPsENsHUQ8gG; __gads=ID=13801efc694179d2-221d07c7d7c6005a:T=1616658639:RT=1616658639:S=ALNI_MaWdweOI1tJoLVSowWX_HLltbUULA; _pk_id.100001.4cf6=fd3cc9cbaf11d8a0.1616658085.1.1616658644.1616658085."
+        # "Cookie": "这里是你登录的Cookie"
     }
     try:
         # req = urllib.request.Request(url=url, headers=head)
@@ -143,13 +147,13 @@ def askURL(url):
 def saveData(datalist, savepath):
     workbook = xlwt.Workbook(encoding="utf-8")  # 创建Workbook对象
     worksheet = workbook.add_sheet('豆瓣电影Top250',cell_overwrite_ok=True)  # 创建名为xxx的工作表 单元格可以被覆盖
-    col = ("电影详情链接", "图片链接", "影片中文名", "影片外文名", "评分", "评价书", "概况", "相关信息")  # 列
-    for i in range(0, 8):
+    col = ("电影详情链接", "图片链接", "影片中文名", "影片外文名", "评分", "评价书", "概况", "相关信息","是否收藏")  # 列
+    for i in range(0, 9):
         worksheet.write(0, i, col[i])
     for i in range(0, 250):
-        print("第%d条"%(i+1))
+        # print("第%d条"%(i+1))
         data = datalist[i]
-        for j in range(0, 8):
+        for j in range(0, 9):
             worksheet.write(i+1, j, data[j])
 
     workbook.save(savepath)  # 保存数据
