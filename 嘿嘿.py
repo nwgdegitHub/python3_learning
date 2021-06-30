@@ -4,7 +4,8 @@ from bs4 import BeautifulSoup
 from urllib import request
 
 # 477 550 697
-NUM = 447
+# 239 692 662 467
+NUM = 664
 
 def askURL(url):
     html_ret = ""
@@ -34,7 +35,7 @@ def askURL(url):
         req = urllib.request.Request(url=url, headers=head)
         response = urllib.request.urlopen(req)
         htmlRet = response.read().decode("utf-8")
-        print(htmlRet)
+        # print(htmlRet)
         html_ret = htmlRet
 
         # 创建空文件
@@ -72,28 +73,31 @@ def creat_dir(path):
         os.mkdir(path) #默认在当前项目下创建
 
 if __name__ == '__main__':
-    askURL("https://www.yalayi.com/gallery/664.html")
+    # askURL("https://www.yalayi.com/gallery/664.html")
 #     # 打开文件
 #     fo = open("849.html", "rw+")
 #     print("文件名: ", fo.name)
 
-    # creat_dir("{}".format(NUM))
-    #
-    # f = open("/Users/udc/Desktop/日常学习/Python3/美女/{}.html".format(NUM), 'r') #没有就新建
-    # html_ret = f.read()
-    # # print(html_ret)
-    # soup = BeautifulSoup(html_ret, "html.parser")  # 使用html.parser解析器来解析html
-    # data = []
-    #
-    # findImgSrc = re.compile(r'<img.*data-original="(.*?)"', re.S)
-    #
-    # for item in soup.find_all('img', class_="lazy"):
-    #     link = re.findall(findImgSrc, str(item))[0]
-    #     data.append(link)
-    # print(data)
-    #
-    # for i, value in enumerate(data):
-    #     print(i, value)
-    #     save_path = "./{}/{}.jpg".format(NUM, i)
-    #     # print(save_path)
-    #     request.urlretrieve(value, save_path)
+    creat_dir("{}".format(NUM))
+
+
+
+
+    f = open((os.getcwd() + '/美女/{}.html').format(NUM), 'r') #没有就新建
+    html_ret = f.read()
+    # print(html_ret)
+    soup = BeautifulSoup(html_ret, "html.parser")  # 使用html.parser解析器来解析html
+    data = []
+
+    findImgSrc = re.compile(r'<img.*data-original="(.*?)"', re.S)
+
+    for item in soup.find_all('img', class_="lazy"):
+        link = re.findall(findImgSrc, str(item))[0]
+        data.append(link)
+    print(data)
+
+    for i, value in enumerate(data):
+        print(i, value)
+        save_path = "./{}/{}.jpg".format(NUM, i)
+        # print(save_path)
+        request.urlretrieve(value, save_path)
