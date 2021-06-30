@@ -3,15 +3,15 @@ import urllib.request, urllib.error
 from bs4 import BeautifulSoup
 from urllib import request
 
-
-NUM = 550
+# 477 550 697
+NUM = 447
 
 def askURL(url):
     html_ret = ""
     head = {
         # User-Agent必要 其他看情况
         # "authority": "www.yalayi.com",
-        # "referer": "https://www.yalayi.com/user/mygallery/",
+        "referer": "https://www.yalayi.com/user/mygallery/",
         # "if-modified-since": "Tue, 29 Jun 2021 06:36:01 GMT",
         # "sec-ch-ua-mobile": "?0",
         # "sec-fetch-dest": "document",
@@ -28,13 +28,13 @@ def askURL(url):
         # "Sec-Fetch-Mode": "navigate",
         # "Sec-Fetch-Site": "none",
         # "Upgrade-Insecure-Requests": "1",
-        "Cookie": "UM_distinctid=17a1896e5f5a55-087a424c171bb1-37607201-240000-17a1896e5f637b; CNZZDATA1279092031=2145931356-1623905385-%7C1625015653; ogmjxmlusername=18856425363; ogmjxmluserid=167138; ogmjxmlgroupid=3; ogmjxmlrnd=LmG8sQZ5fsGUlHL3co1H; ogmjxmlauth=d884a3835c9e405e5fbf3866e4f88a94"
+        "Cookie": "UM_distinctid=17a1896e5f5a55-087a424c171bb1-37607201-240000-17a1896e5f637b; ogmjxmlusername=18856425363; ogmjxmluserid=167138; ogmjxmlgroupid=3; ogmjxmlrnd=LmG8sQZ5fsGUlHL3co1H; ogmjxmlauth=d884a3835c9e405e5fbf3866e4f88a94; CNZZDATA1279092031=2145931356-1623905385-%7C1625031868"
     }
     try:
         req = urllib.request.Request(url=url, headers=head)
         response = urllib.request.urlopen(req)
         htmlRet = response.read().decode("utf-8")
-        # print(htmlRet)
+        print(htmlRet)
         html_ret = htmlRet
 
         # 创建空文件
@@ -69,31 +69,31 @@ def creat_dir(path):
     :return:文件夹
     """
     if not os.path.exists(path):
-        os.mkdir(path)
+        os.mkdir(path) #默认在当前项目下创建
 
 if __name__ == '__main__':
-    # askURL("https://www.yalayi.com/gallery/550.html")
+    askURL("https://www.yalayi.com/gallery/664.html")
 #     # 打开文件
 #     fo = open("849.html", "rw+")
 #     print("文件名: ", fo.name)
 
-    creat_dir("{}".format(NUM))
-
-    f = open("/Users/udc/Desktop/日常学习/Python3/美女/{}.html".format(NUM), 'r')
-    html_ret = f.read()
-    # print(html_ret)
-    soup = BeautifulSoup(html_ret, "html.parser")  # 使用html.parser解析器来解析html
-    data = []
-
-    findImgSrc = re.compile(r'<img.*data-original="(.*?)"', re.S)
-
-    for item in soup.find_all('img', class_="lazy"):
-        link = re.findall(findImgSrc, str(item))[0]
-        data.append(link)
-    print(data)
-
-    for i, value in enumerate(data):
-        print(i, value)
-        save_path = "./{}/{}.jpg".format(NUM, i)
-        # print(save_path)
-        request.urlretrieve(value, save_path)
+    # creat_dir("{}".format(NUM))
+    #
+    # f = open("/Users/udc/Desktop/日常学习/Python3/美女/{}.html".format(NUM), 'r') #没有就新建
+    # html_ret = f.read()
+    # # print(html_ret)
+    # soup = BeautifulSoup(html_ret, "html.parser")  # 使用html.parser解析器来解析html
+    # data = []
+    #
+    # findImgSrc = re.compile(r'<img.*data-original="(.*?)"', re.S)
+    #
+    # for item in soup.find_all('img', class_="lazy"):
+    #     link = re.findall(findImgSrc, str(item))[0]
+    #     data.append(link)
+    # print(data)
+    #
+    # for i, value in enumerate(data):
+    #     print(i, value)
+    #     save_path = "./{}/{}.jpg".format(NUM, i)
+    #     # print(save_path)
+    #     request.urlretrieve(value, save_path)
