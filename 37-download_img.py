@@ -6,27 +6,36 @@ import urllib.request, urllib.error
 
 
 def startdown():
+    for j in range(600, 699):
 
-    for i in range(0, 100):
-        try:
+        creat_dir("{}".format(j))
+        for i in range(1, 50):
+            try:
 
-            url = "https://img.yalayi.net/img/gallery/{}/{}.jpg!pcimg".format('849',i)
-            # print(url)
-            save_path = "./{}/{}.jpg".format('849',i)
-            # print(save_path)
-            request.urlretrieve(url, save_path) # s是图片的网络地址，./图片1.jpg，是图片的保存地址，如果不写./表示在本目录下
+                url = "https://img.yalayi.net/img/gallery/{}/{}.jpg!pcimg".format(j, i)
+                # print(url)
+                save_path = "./{}/{}.jpg".format(j, i)
+                # print(save_path)
+                request.urlretrieve(url, save_path)  # s是图片的网络地址，./图片1.jpg，是图片的保存地址，如果不写./表示在本目录下
+                while i == 50:
+                    print("{}目录下载完毕!".format(j))
+            except:
+                if i == 1:
+                    print("{}目录下无内容!".format(j))
+                    # remove_dir("{}".format(j))
+                    break
 
-        except:
-            continue
+                continue
 
-    # try:
-    #     url = 'https://img.yalayi.net/img/gallery/841/0.jpg!pcimg'
-    #     ret = request.urlretrieve(url, './841/0.jpg')
-    #     print(ret)
-    #     # ('./841/30.jpg', < http.client.HTTPMessage object at 0x10cbe85e0 >)
-    # except:
-    #     # 如果真的出现了异常执行的代码
-    #     print("continue")
+        # try:
+        #     url = 'https://img.yalayi.net/img/gallery/841/0.jpg!pcimg'
+        #     ret = request.urlretrieve(url, './841/0.jpg')
+        #     print(ret)
+        #     # ('./841/30.jpg', < http.client.HTTPMessage object at 0x10cbe85e0 >)
+        # except:
+        #     # 如果真的出现了异常执行的代码
+        #     print("continue")
+
 
 def creat_dir(path):
     """
@@ -37,8 +46,12 @@ def creat_dir(path):
     if not os.path.exists(path):
         os.mkdir(path)
 
+def remove_dir(path):
+    if os.path.exists(path):
+        os.remove(path)
+
 
 if __name__ == '__main__':
 
-    creat_dir("849")
+
     startdown()
